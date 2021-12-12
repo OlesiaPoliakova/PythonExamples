@@ -7,7 +7,7 @@ b = int(input()) #спускается вниз за ночь
 if a >= h:
     time = 1
 else:
-    time = 1 + math.ceil((h-a)//(a-b))
+    time = 1 + math.ceil((h-a)/(a-b))
 print(int(time))
 """ 
 edge cases
