@@ -16,5 +16,5 @@ print(sum/count)
 #         yield x
 #     yield x
 
-print(f'Average is : {mean(input_integers_till_zero())}')
+#print(f'Average is : {mean(input_integers_till_zero())}')
 """Определите среднее значение всех элементов последовательности, завершающейся числом 0"""
