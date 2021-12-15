@@ -7,7 +7,7 @@ while True:
     count += 1
     if number == 0:
         break
-print(sum//count)
+print(sum/count)
 
 
 """Определите среднее значение всех элементов последовательности, завершающейся числом 0"""
