@@ -9,5 +9,12 @@ while True:
         break
 print(sum/count)
 
+# from statistics import mean
+#
+# def input_integers_till_zero():
+#     while (x := int(input())) != 0:
+#         yield x
+#     yield x
 
+print(f'Average is : {mean(input_integers_till_zero())}')
 """Определите среднее значение всех элементов последовательности, завершающейся числом 0"""
