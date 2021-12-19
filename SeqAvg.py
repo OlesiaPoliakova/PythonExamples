@@ -9,7 +9,7 @@ while True:
         break
 print(sum/count)
 
-# from statistics import mean
+# from statistics import mean/э
 #
 # def input_integers_till_zero():
 #     while (x := int(input())) != 0:
