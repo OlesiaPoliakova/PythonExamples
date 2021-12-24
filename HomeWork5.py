@@ -68,4 +68,5 @@ def occurs_before(numb_string):
             print('NO')
         numb_set.add(number)
 
+
 occurs_before('2 5 3 2 3 7 7 8')
