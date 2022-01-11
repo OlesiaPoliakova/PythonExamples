@@ -1,7 +1,5 @@
 import unittest
 from SnailExample import get_snail_time
-
-
 class TestExample(unittest.TestCase):
     def test_validity(self):
         self.assertEqual(get_snail_time(10, 2, 1), 9)  # 9 - expected result
