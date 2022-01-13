@@ -18,18 +18,13 @@ select_vocation_type = input('Select the type of your vacation from the followin
 
 def vocation_request_builder(func):
     def wrapper(*args, **kwargs):
-        print("CEO Red Bull Inc.\nMr. John Bigbull")
-        return func(*args, **kwargs)
-
+        title = ("CEO Red Bull Inc.\nMr. John Bigbull")
+        return title + func(*args, **kwargs)
     return wrapper
 
-
 @vocation_request_builder
-
-
 def request_example(first_name, surname, from_date,to_date, select_vocation_type):
-    print(f"Hi John,\nI need the paid {select_vocation_type} from {from_date.strftime('%d %b %Y')} to {to_date.strftime('%d %b %Y')}.\n"
+    return (f"Hi John,\nI need the paid {select_vocation_type} from {from_date.strftime('%d %b %Y')} to {to_date.strftime('%d %b %Y')}.\n"
           f"{first_name} {surname}")
 
-
-request_example(first_name, surname, from_date, to_date, select_vocation_type)
+print (request_example(first_name, surname, from_date, to_date, select_vocation_type))
