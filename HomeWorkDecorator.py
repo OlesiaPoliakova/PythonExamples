@@ -2,6 +2,7 @@
 from datetime import datetime
 
 
+
 first_name = input('Enter your First Name here: ')
 surname = input('Enter your Surname here: ')
 raw_data1 = input('Enter the date the vacation begins in the format "YYYY,MM,DD": ')
