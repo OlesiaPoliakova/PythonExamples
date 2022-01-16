@@ -47,10 +47,6 @@ for word in match_letters_of_two_words():
     print(word)
 
 
-# input_word = input('Enter your word here: ')
-# def return_word():
-#     if input_word in words:
-#         yield
 
 
 

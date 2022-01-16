@@ -1,8 +1,6 @@
 
 from datetime import datetime
 
-
-
 first_name = input('Enter your First Name here: ')
 surname = input('Enter your Surname here: ')
 raw_data1 = input('Enter the date the vacation begins in the format "YYYY,MM,DD": ')
@@ -28,4 +26,4 @@ def request_example(first_name, surname, from_date,to_date, select_vocation_type
     return (f"Hi John,\nI need the paid {select_vocation_type} from {from_date.strftime('%d %b %Y')} to {to_date.strftime('%d %b %Y')}.\n"
           f"{first_name} {surname}")
 
-print (request_example(first_name, surname, from_date, to_date, select_vocation_type))
+print(request_example(first_name, surname, from_date, to_date, select_vocation_type))
