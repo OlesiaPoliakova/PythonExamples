@@ -18,10 +18,6 @@ words = list(filter(lambda word: word not in ["","'"],split_to_words(words_with_
 # print(words)
 
 input_word = input(f"Enter your word here: ")
-# if input_word in words:
-#     words.pop(words.index(input_word))
-# else:
-#     print('Word isn\'t found in quote file')
 
 words_dict = {}
 for word in words:
@@ -32,18 +28,8 @@ for word in words:
         words_dict[letter] = [word]#это новый список по опередленной букве
 # print(words_dict)#проверяем словарь из списков слов, на определенную букву
 
-# def switchboard():
-#     choice = yield "Send 1 for Pig Latin, 2 for support"
-#     if choice == 1:
-#         yield from pig_latin_translator()
-#     elif choice == 2:
-#         yield from bad_service_chatbot()
-#     else:
-#         return
-
 def return_word():
     # try:
-
                input_word = (yield) ##coroutine принимает значение, ждет ввода (но может и выводить)
                next_word = input_word #делаем его следующим словом
                yield next_word #генерируем  слово
