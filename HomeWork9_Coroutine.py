@@ -28,6 +28,14 @@ for word in words:
         words_dict[letter] = [word]#это новый список по опередленной букве
 # print(words_dict)#проверяем словарь из списков слов, на определенную букву
 
+# def switchboard():
+#     choice = yield "Send 1 for Pig Latin, 2 for support"
+#     if choice == 1:
+#         yield from pig_latin_translator()
+#     elif choice == 2:
+#         yield from bad_service_chatbot()
+#     else:
+#         return
 def return_word():
     # try:
                input_word = (yield) ##coroutine принимает значение, ждет ввода (но может и выводить)
