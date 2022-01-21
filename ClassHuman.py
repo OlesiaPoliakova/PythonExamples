@@ -4,7 +4,7 @@ from datetime import date
 
 class Human:
     population = 0
-
+    max_population = 10
     def __init__(self,
                  name: str,
                  surname: str,
@@ -25,7 +25,7 @@ class Human:
         self.smile = smile
         self.emotion = emotion
 
-        if self.__class__.population < 10:
+        if self.__class__.population < self.__class__.max_population:
             self.__class__.population += 1
         else:
             raise RuntimeError("You could not create instance. Limit 10 reached")
@@ -88,3 +88,5 @@ person3 = Human("Ivan", "Tetcher", date(1989, 5, 25), "mail", 90, 1.95, 10, True
 person1.eat("onion")
 person3.say(f"Life is amazing")
 person2.life_energy()
+print(person1.age)
+
