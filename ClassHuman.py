@@ -53,7 +53,8 @@ class Human:
 
     @property
     def age(self):
-        return (date.today() - self.birth_date).days // 365
+        age = (date.today() - self.birth_date).days // 365
+        return age
 
     def life_energy(self):
         if self.movement_type == 'not moving':
