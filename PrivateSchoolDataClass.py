@@ -170,15 +170,9 @@ for i in students:
     class8a.remove_student(i)
 print(f"We have budget {school_ranok.budget_counting()}")
 print(len(class9a.students))
-# school_ranok.budget_check()
 students1 = [student5, student6]
 for i in students1:
     class9a.remove_student(i)
 school_ranok.budget_check()
 
-#
-# try:
-#     school_ranok.budget_check()
-# except EmptyGroupException:
-#     print("error")
 
