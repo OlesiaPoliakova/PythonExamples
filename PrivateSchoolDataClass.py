@@ -50,11 +50,14 @@ class PrivateSchool():
         del self.school_classes[id]
 
     def budget_check(self):
+        school_classes_empty = []
         for school_class in self.school_classes.values():
             if len(school_class.students) == 0:
-                raise EmptyGroupException(
+                school_classes_empty.append(school_class.id)
+        if len(school_classes_empty) > 0:
+            raise EmptyGroupException(
                         f"Unfortunatly {self.name} havn't sufficient number of "
-                        f"students in the {self.school_classes.keys()}"
+                        f"students in the {[*school_classes_empty]}"
                     )
 
 class SchoolClass():
@@ -167,7 +170,15 @@ for i in students:
     class8a.remove_student(i)
 print(f"We have budget {school_ranok.budget_counting()}")
 print(len(class9a.students))
-school_ranok.budget_check()
-for i in students:
+# school_ranok.budget_check()
+students1 = [student5, student6]
+for i in students1:
     class9a.remove_student(i)
 school_ranok.budget_check()
+
+#
+# try:
+#     school_ranok.budget_check()
+# except EmptyGroupException:
+#     print("error")
+
