@@ -1,38 +1,35 @@
 
 from abc import ABC, abstractmethod
 
-def Ingridient(cls, description, price):
-        old_cost = cls.cost
-        old_description = cls.get_description
-
-        def cost(self):
-            return old_cost(self) + price
-
-        def get_description(self):
-            return old_description(self) + " with " + description
-
-        cls.cost = cost
-        cls.get_description = get_description
-        return cls
+def Ingredient(cls, description, price):
+    old_cost = cls.cost
+    old_description = cls.get_description
+    def cost(self):
+        return old_cost(self) + price
+    def get_description(self):
+        return old_description(self) + " with " + description
+    cls.cost = cost
+    cls.get_description = get_description
+    return cls
 
 def Milk(cls):
     def wrapper():
-        return Ingridient(cls, "milk", 33)
+        return Ingredient(cls, "milk", 33)
     return wrapper()
 
 def SoyMilk(cls):
     def wrapper():
-        return Ingridient(cls, "soy milk", 55)
+        return Ingredient(cls, "soy milk", 55)
     return wrapper()
 
 def Mocha(cls):
     def wrapper():
-        return Ingridient(cls, "mocha", 55)
+        return Ingredient(cls, "mocha", 55)
     return wrapper()
 
 def WhippedCream(cls):
     def wrapper():
-        return Ingridient(cls, "whipped cream", 33)
+        return Ingredient(cls, "whipped cream", 33)
     return wrapper()
 
 class Beverage(ABC):
