@@ -174,5 +174,3 @@ class Androgin(Man, Woman):
             self.__wife = partner
             if marry_partner:
                 self.__wife.marry(self, marry_partner=False)
-
-

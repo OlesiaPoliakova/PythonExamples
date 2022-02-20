@@ -39,3 +39,4 @@ def test_child_surname_creation(parents, husband_is_father, father_sex):
         mother.marry(father)
     child = mother.birth('Yakov', 52, 3.5, Sex.man, father)
     assert child.surname == father.surname
+

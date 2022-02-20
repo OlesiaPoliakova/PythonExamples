@@ -25,4 +25,3 @@ def test_age_changes(mocker, person, now, expected_age):
     assert person.age == expected_age
     mocker.patch("HumanClassesandMethods.get_today", return_value=now)
     assert person.age == expected_age
-
