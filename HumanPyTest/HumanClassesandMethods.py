@@ -5,6 +5,9 @@ from enum import Enum, unique
 def get_today():
     return date.today()
 
+class NoFatherException(Exception):
+    pass
+
 @unique
 class Sex(Enum):
     man = "M"
@@ -27,7 +30,8 @@ class Human(metaclass=ABCMeta):
 
     @property
     def age(self):
-        return int(((get_today() - self.birth_date).days) / 365)
+        age_person = int(((get_today() - self.birth_date).days) / 365)
+        return None if age_person < 0 else age_person
 
     @property
     def children(self):
@@ -100,6 +104,11 @@ class Woman(Human):
             self.__husband.marry(self, marry_partner=False)
 
     def birth(self, name, height, weight, sex: Sex, father: Man):
+        if type(father) is Woman:
+            raise NoFatherException(
+                "Unfortunately woman can't be father"
+            )
+
         if sex == Sex.man:
            child = Man(
                     name,

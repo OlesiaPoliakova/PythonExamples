@@ -1,8 +1,26 @@
 from freezegun import freeze_time
-import datetime
+from HumanClassesandMethods import Man
+from datetime import date, datetime
+import pytest
 
-def test():
-    assert datetime.datetime.now() != datetime.datetime(2012, 1, 14)
-    with freeze_time("2012-01-14"):
-        assert datetime.datetime.now() == datetime.datetime(2012, 1, 14)
-    assert datetime.datetime.now() != datetime.datetime(2012, 1, 14)
+@pytest.fixture(scope="module")
+def person():
+    return Man('Vladimir',
+                'Velikiy',
+                195,
+                80,
+                date(1990, 5, 18))
+@pytest.mark.parametrize("now, expected_age",
+                         [("1990-05-19", 0),
+                          ("1991-05-19", 1),
+                          ("1900-05-19", None)
+                          ]
+                         )
+
+def test_age_changes(person, now, expected_age):
+    with freeze_time(now):
+        assert person.age == expected_age
+
+
+
+

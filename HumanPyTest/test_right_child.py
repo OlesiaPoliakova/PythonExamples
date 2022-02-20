@@ -1,25 +1,32 @@
 import pytest
-from HumanClassesandMethods import Man, Woman, Sex, Androgin
+from HumanClassesandMethods import Man, Woman, Sex, Androgin, NoFatherException
 from datetime import date
 
-
-@pytest.fixture(scope="module", autouse=True)
-def parents():
-    return [Woman('Yana',
+def generate_parent(sex):
+    if sex == Sex.woman:
+        return Woman('Yana',
                   'Klochko',
                   190,
                   65,
-                  date(1989, 5, 25)),
-            Man('Vladimir',
+                  date(1989, 5, 25))
+    elif sex == Sex.man:
+        return Man('Vladimir',
                 'Velikiy',
                 195,
                 80,
-                date(1990, 5, 18)),
-            Androgin('Yaro',
+                date(1990, 5, 18))
+    else:
+        return Androgin('Yaro',
                      'Garah',
                      187,
                      80,
                      date(1995, 5, 25))
+
+@pytest.fixture(scope="module")
+def parents():
+    return [generate_parent(Sex.woman),
+            generate_parent(Sex.man),
+            generate_parent(Sex.androgin)
             ]
 
 def test_boy_creation(parents):
@@ -40,20 +47,33 @@ def test_girl_creation(parents):
     assert child.weight == 3.2
 
 
-def test_androgin_creation(parents):
-    child = parents[0].birth('Ada', 58, 4.0, Sex.androgin, parents[2])
-    assert child.height == 50
-    assert type(child) == Androgin
-    assert child.surname == parents[2].surname
-    assert child.name == 'Ada'
-    assert child.weight == 4.0
 
+@pytest.mark.parametrize("parent1_sex, parent2_sex, expected_exception",
+                         [(Sex.man, Sex.man, AttributeError),
+                          (Sex.man, Sex.woman, AttributeError),
+                          (Sex.man, Sex.androgin, AttributeError),
+                          (Sex.woman, Sex.woman, NoFatherException),
+                          (Sex.woman, Sex.man, True),
+                          (Sex.woman, Sex.androgin, True),
+                          (Sex.androgin, Sex.androgin, True),
+                          (Sex.androgin, Sex.man, True),
+                          (Sex.androgin, Sex.woman, NoFatherException),
+                          ]
+                         )
 
-@pytest.mark.parametrize
-def test_exception_birth_possibility(expected_exception, parent1, parent2):
-    child = parents[0].birth('Ada', 58, 4.0, Sex.androgin, parents[2])
-    with pytest.raises(expected_exception):
-        child.birth(parent1, parent2)
+def test_birth_possibility(parent1_sex, parent2_sex, expected_exception):
+    human1 = generate_parent(parent1_sex)
+    human2 = generate_parent(parent2_sex)
+    if type(expected_exception) is bool and expected_exception:
+        child = human1.birth('Ada', 58, 4.0, Sex.androgin, human2)
+        assert child.height == 58
+        assert type(child) == Androgin
+        assert child.surname == human2.surname
+        assert child.name == 'Ada'
+        assert child.weight == 4.0
+    else:
+        with pytest.raises(expected_exception):
+            human1.birth('Ada', 58, 4.0, Sex.androgin, human2)
 
 
 
